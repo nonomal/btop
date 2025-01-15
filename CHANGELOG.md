@@ -1,3 +1,136 @@
+## v1.4.0
+
+References | Description | Author(s)
+--- | --- | ---
+#703 | NetBSD Support | @fraggerfox
+#903 | Intel GPU support | @bjia56
+161e8f4 | Added warnings when toggling boxes and terminal size is to small | @aristocratos
+4210f5f | Fix missing core percentages, issue #792 | @aristocratos
+35857f8 | Various fixes for drawing GPU related information | @aristocratos
+#879 | fix divide 0 error when caculating disk usage percentage (#791) | @flylai
+#884 | fix io_graph_speeds parsing | @feihtthief
+#863 | V1 of Phoenix Night theme | @Firehawke
+3f384c0 | Fixed missing CPU core temps when too small to show core temp graphs, issues #792 #867 | @aristocratos
+97d2fb5 | Fixed missing IO graphs in IO mode, issue #867 | @aristocratos
+#840 | fix zero temp (#467) | @joske
+#850 | Fix comments (parsing) in theme files | @acidghost
+#806 | Add regex filtering | @imwints
+#836 | Fix typo in file existences check for voltage_now | @vsey
+#835 | Show time in days when remaining battery exceeds an estimation of 24h | @imwints
+#819 | (AMD Gpu) fix pwr_usage not being defined correctly during rsmi collection | @kalkafox
+#831 | macOS: fix crash if there exists a uid not associated with any user | @thecoder-001
+#796 | Fix rsmi device name buffer size | @davc0n
+#807 | Add gruvbox_light theme | @kk9uk
+#724 | Create man page for btop in Markdown | @ottok
+#734 | Include metadata in binary version output `btop --version` | @imwints
+#771 | collect: Fix reading of battery power draw on Linux | @Derppening
+
+## v1.3.2
+
+Description | Author(s) | References
+--- | --- | ---
+fix: Can't detect librocm 6.0.x | @imwints, @aristocratos | #761
+
+## v1.3.1
+
+Description | Author(s) | References
+--- | --- | ---
+GPU: Added support for dynamic loading of ROCm v6 libraries | @aristocratos, @fxzjshm | 5511131, #737
+Increase max network interface name to 15 | @tessus | #714
+Fix OpenBSD UTF-8 locale detection | @lcheylus, @imwints | #753, #717
+Add hot-reloading of config file with CTRL+R or SIGUSR2 signal | @MartinPit | #722
+Add battery power draw for linux and freebsd | @vsey | #689
+Fix crash caused by string exception when cpu clock is exactly between 999.5 and 999.9 Mhz | @rkmcode | #735
+Write newline at end of config file | @planet36 | #743
+Add theme based on Everforest Dark Medium palette | @M-Sviridov | #746
+fix: don't mangle memory for zombie processes | @joske | #747
+Share common code from collect | @imwints | #756
+Fixed incorrect used and available memory for OSX | | 4461a43
+
+## v1.3.0
+
+* Added Gpu Support Linux | @romner-set | PR #529
+
+* Added platform support for OpenBSD | @joske | PR #607
+
+* Enable macos clang | @muneebmahmed | PR #666
+
+* Fix Apple Silicon CPUs misprinted | @masiboss | PR #679
+
+* Cmake support for MacOS | @imwints | PR #675
+
+* Elementarish theme: color update according to Elementary palette | @stradicat | PR #660
+
+* Add alternative key codes for Delete, Insert, Home, End | @ivanp7 | PR #659
+
+* Fix scrollbar not clearing sometimes. | @DecklynKern | PR #643
+
+* Add keybind for toggling memory display mode in PROC box | @rahulaggarwal965 | PR #623
+
+* Minor string initialization improvement | @imwints | PR #636
+
+* Made disks statvfs logic asynchronous. | @crestfallnatwork | PR #633
+
+* Fix signal list on non-linux/weird linux platforms | @lvxnull | PR #630
+
+* Add option to accumulate a child's resources in parent in tree-view | @imwints | PR #618
+
+* Add CMake support for Linux | @imwints | PR #589
+
+* Horizon theme | @SidVeld | PR #610
+
+* Fix short conversion of 1000-1023 *iB | @scorpion-26 | #609
+
+* Fix integer overflows in btop_collect.cpp | @dorrellmw | #546
+
+* Support compiling with LLVM | @imwints | #510
+
+* Fix getting zfs pool name with '.' char in freebsd | @jfouquart | #602
+
+* [macos/freebsd] support gcc13 | @joske | #600
+
+* FreeBSD swap info | @rrveex | #560
+
+* Create adwaita.theme | @flipflop133 | #485
+
+* Try get terminal size of "/dev/tty" if stdout fails | @imwints | PR #627
+
+* Refresh rate program argument | @imwints | PR #640
+
+* Improved error handling when determining the config directory | @imwints | #652
+
+* Use native POSIX polling syscalls to read input | @lvxnull | #624
+
+* Conditional compile on Big Sur and up | @joske | PR #690
+
++ Various fixes by @imwints, @simplepad, @joske, @gwena, @cpalv, @iambeingtracked, @mattico, @NexAdn
+
+## v1.2.13
+
+* Makefile: VERBOSE=true flag for Makefile to display all compiler commands and fixed so already set CXXFLAGS and LDFLAGS are displayed.
+
+* Makefile: Added autodetection for gcc12 to make compiling on macos Ventura easier.
+
+* Changed: Reverted back to sysconf(_SC_NPROCESSORS_ONLN) for Cpu core count ant let the new dynamic update fix if cores are turned on later
+
+* Fixed: Ignore disks that fails in statvfs64() to avoid slowdowns and possible crashes.
+
+* Fixed: Moved up get_cpuHz() in the execution order to get better cpu clock reading.
+
+* Added: proc tree view: if there's more than 40 width left, try to print full cmd, by @Superty
+
+* Fixed: Show the first IP of the interface in NET box instead of the last, by @correabuscar
+
+* Changed: Replace getnameinfo with inet_ntop [on Linux], by @correabuscar
+
+* Fixed: Not picking up last username from /etc/passwd
+
+* Fixed: Process nice value underflowing, issue #461
+
+* Changed: Replace getnameinfo with inet_ntop [on FreeBSD], by @correabuscar
+
+* Changed: Replace getnameinfo with inet_ntop [on macos], by @correabuscar
+
 ## v1.2.12
 
 * Added: Dynamic updating of max number of CPU cores.
@@ -74,7 +207,7 @@
 
 * Fixed: Wrong memory unit when shorten and size is less than 10, by @mohi001
 
-* Fixed: Use cpu cores avarage temp if missing cpu package temp for FreeBSD
+* Fixed: Use cpu cores average temp if missing cpu package temp for FreeBSD
 
 * Changed: Enter symbol to a more common variant
 
@@ -370,7 +503,7 @@
 
 * Fixed: Sizing constraints bug on start and boxes can be toggled from size error screen
 
-* Fixed: UTF-8 check crashing if LANG was set to non existant locale
+* Fixed: UTF-8 check crashing if LANG was set to non existent locale
 
 ## v1.0.4
 
